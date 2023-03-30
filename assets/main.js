@@ -1,11 +1,12 @@
 var searchHistory = [];
 console.log(localStorage.getItem('Searches'))
 
-if (!localStorage.getItem('Searches')) {}
+if (!localStorage.getItem('Searches')) { }
 else {
     console.log("test")
     searchHistory = [JSON.parse(localStorage.getItem('Searches'))]
-console.log(searchHistory)}
+    console.log(searchHistory)
+}
 
 
 
@@ -14,7 +15,7 @@ var searchTerm;
 console.log("hello, world")
 var today = dayjs().format('MM/DD/YYYY');
 let searchBar = $('#searchLocation');
-if(!localStorage.getItem('Searches') === "") {searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1])}
+if (!localStorage.getItem('Searches') === "") { searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1]) }
 console.log(searchBar)
 const searchButton = document.getElementById('searchButton');
 const cityName = $('#cityName');
@@ -34,19 +35,19 @@ const temp4 = $('#temp4');
 const temp5 = $('#temp5');
 var dataRes;
 
-$('section.citySection').click( async () => {
+$('section.citySection').click(async () => {
     console.log(event.target.textContent)
     searchTerm = event.target.textContent
     geoCode(searchTerm).then(values => {
 
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${values[0].lat}&lon=${values[0].lon}&units=imperial&appid=106768b99c3bf32d1e789810e42deff2`).then(function (response) {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${values[0].lat}&lon=${values[0].lon}&units=imperial&appid=106768b99c3bf32d1e789810e42deff2`).then(function (response) {
 
             return response.json();
         }).then(async function (data) {
             $("img").css('visibility', 'visible')
             searchHistory.push(searchTerm);
             console.log(searchHistory)
-            localStorage.setItem("Searches",  JSON.stringify(searchHistory) )
+            localStorage.setItem("Searches", JSON.stringify(searchHistory))
             console.log(data);
             cityName.html(data.city.name);
             largeWeatherIcon.attr("src", `https://openweathermap.org/img/wn/${data.list[1].weather[0].icon}@2x.png`);
@@ -64,12 +65,12 @@ $('section.citySection').click( async () => {
             temp3.text('Temp: ' + data.list[17].main.temp);
             temp4.text('Temp: ' + data.list[25].main.temp);
             temp5.text('Temp: ' + data.list[33].main.temp);
-            $('#img1').attr('src',`https://openweathermap.org/img/wn/${data.list[1].weather[0].icon}@2x.png` )
-            $('#img2').attr('src',`https://openweathermap.org/img/wn/${data.list[9].weather[0].icon}@2x.png` )
-            $('#img3').attr('src',`https://openweathermap.org/img/wn/${data.list[17].weather[0].icon}@2x.png` )
-            $('#img4').attr('src',`https://openweathermap.org/img/wn/${data.list[25].weather[0].icon}@2x.png` )
-            $('#img5').attr('src',`https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png` )
-           
+            $('#img1').attr('src', `https://openweathermap.org/img/wn/${data.list[1].weather[0].icon}@2x.png`)
+            $('#img2').attr('src', `https://openweathermap.org/img/wn/${data.list[9].weather[0].icon}@2x.png`)
+            $('#img3').attr('src', `https://openweathermap.org/img/wn/${data.list[17].weather[0].icon}@2x.png`)
+            $('#img4').attr('src', `https://openweathermap.org/img/wn/${data.list[25].weather[0].icon}@2x.png`)
+            $('#img5').attr('src', `https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png`)
+
         })
 
 
@@ -91,7 +92,7 @@ forecastImages = [
 
 
 function geoCode(searchTerm) {
-    
+
     return new Promise((resolve, reject) => fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchTerm},&appid=106768b99c3bf32d1e789810e42deff2`)
         .then(function (response) { return response.json() })
         .then(function (data) {
@@ -115,7 +116,7 @@ searchButton.addEventListener('click', async () => {
             $("img").css('visibility', 'visible')
             searchHistory.push(searchBar.val());
             console.log(searchHistory)
-            localStorage.setItem("Searches",  JSON.stringify(searchHistory) )
+            localStorage.setItem("Searches", JSON.stringify(searchHistory))
             console.log(data);
             cityName.html(data.city.name);
             largeWeatherIcon.attr("src", `https://openweathermap.org/img/wn/${data.list[1].weather[0].icon}@2x.png`);
@@ -133,12 +134,12 @@ searchButton.addEventListener('click', async () => {
             temp3.text('Temp: ' + data.list[17].main.temp);
             temp4.text('Temp: ' + data.list[25].main.temp);
             temp5.text('Temp: ' + data.list[33].main.temp);
-            $('#img1').attr('src',`https://openweathermap.org/img/wn/${data.list[1].weather[0].icon}@2x.png` )
-            $('#img2').attr('src',`https://openweathermap.org/img/wn/${data.list[9].weather[0].icon}@2x.png` )
-            $('#img3').attr('src',`https://openweathermap.org/img/wn/${data.list[17].weather[0].icon}@2x.png` )
-            $('#img4').attr('src',`https://openweathermap.org/img/wn/${data.list[25].weather[0].icon}@2x.png` )
-            $('#img5').attr('src',`https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png` )
-           
+            $('#img1').attr('src', `https://openweathermap.org/img/wn/${data.list[1].weather[0].icon}@2x.png`)
+            $('#img2').attr('src', `https://openweathermap.org/img/wn/${data.list[9].weather[0].icon}@2x.png`)
+            $('#img3').attr('src', `https://openweathermap.org/img/wn/${data.list[17].weather[0].icon}@2x.png`)
+            $('#img4').attr('src', `https://openweathermap.org/img/wn/${data.list[25].weather[0].icon}@2x.png`)
+            $('#img5').attr('src', `https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png`)
+
         })
 
 
