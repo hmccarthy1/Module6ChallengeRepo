@@ -1,6 +1,12 @@
-var searchHistory = Array;
-searchHistory = [JSON.parse(localStorage.getItem('Searches'))]
-console.log(searchHistory)
+var searchHistory = [];
+console.log(localStorage.getItem('Searches'))
+
+if (!localStorage.getItem('Searches')) {}
+else {
+    console.log("test")
+    searchHistory = [JSON.parse(localStorage.getItem('Searches'))]
+console.log(searchHistory)}
+
 
 
 
@@ -8,8 +14,7 @@ var searchTerm;
 console.log("hello, world")
 var today = dayjs().format('MM/DD/YYYY');
 let searchBar = $('#searchLocation');
-if(searchHistory[0].length > 0) {searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1])}
-
+if(!localStorage.getItem('Searches') === "") {searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1])}
 console.log(searchBar)
 const searchButton = document.getElementById('searchButton');
 const cityName = $('#cityName');
