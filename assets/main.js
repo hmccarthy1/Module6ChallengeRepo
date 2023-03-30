@@ -8,7 +8,8 @@ var searchTerm;
 console.log("hello, world")
 var today = dayjs().format('MM/DD/YYYY');
 let searchBar = $('#searchLocation');
-searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1])
+if(searchHistory.length > 0) {searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1])}
+
 console.log(searchBar)
 const searchButton = document.getElementById('searchButton');
 const cityName = $('#cityName');
