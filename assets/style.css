@@ -1,0 +1,98 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: blueviolet;
+}
+
+header h1 {
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+    
+}
+
+main {
+    display: flex;
+    width: 100vw;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: space-evenly;
+}
+
+.sidebar h1 {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 34pt;
+}
+
+.sidebar input {
+    height: 4vh;
+}
+
+.sidebar button {
+    width: 20vw;
+    height: 3vh;
+    background-color: rgb(190, 184, 184);
+    border-radius: 5px;
+}
+
+
+span {
+    background-color: gray;
+    height: .2vh;
+}
+
+.rightSection {
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.weatherSection {
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-style: solid;
+    border-width: 5px;
+    width: 60vw;
+    margin-top: 3vh;
+}
+
+.FiveDayForecast {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cardGallery {
+    display: flex;
+    justify-content: space-between;
+    height: 25vh;
+
+}
+
+.card {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    flex: 0 1 18%;
+    height: 100%;
+}
+
+.weatherHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
