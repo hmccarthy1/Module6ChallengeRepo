@@ -93,7 +93,7 @@ forecastImages = [
 
 function geoCode(searchTerm) {
 
-    return new Promise((resolve, reject) => fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchTerm},&appid=106768b99c3bf32d1e789810e42deff2`)
+    return new Promise((resolve, reject) => fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchTerm},&appid=106768b99c3bf32d1e789810e42deff2`)
         .then(function (response) { return response.json() })
         .then(function (data) {
 
@@ -109,7 +109,7 @@ searchButton.addEventListener('click', async () => {
     searchTerm = searchBar.val();
     geoCode(searchTerm).then(values => {
 
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${values[0].lat}&lon=${values[0].lon}&units=imperial&appid=106768b99c3bf32d1e789810e42deff2`).then(function (response) {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${values[0].lat}&lon=${values[0].lon}&units=imperial&appid=106768b99c3bf32d1e789810e42deff2`).then(function (response) {
 
             return response.json();
         }).then(async function (data) {
