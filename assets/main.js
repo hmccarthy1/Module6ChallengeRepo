@@ -4,7 +4,7 @@ console.log(localStorage.getItem('Searches'))
 if (!localStorage.getItem('Searches')) { }
 else {
     console.log("test")
-    searchHistory = [JSON.parse(localStorage.getItem('Searches'))]
+    searchHistory = JSON.parse(localStorage.getItem('Searches'))
     console.log(searchHistory)
 }
 
