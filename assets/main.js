@@ -1,5 +1,6 @@
+
 var searchHistory = [];
-console.log(localStorage.getItem('Searches'))
+
 
 if (!localStorage.getItem('Searches')) { }
 else {
@@ -12,10 +13,14 @@ else {
 
 
 var searchTerm;
-console.log("hello, world")
 var today = dayjs().format('MM/DD/YYYY');
 let searchBar = $('#searchLocation');
-if (!localStorage.getItem('Searches') === "") { searchBar.attr('placeholder', searchHistory[0][searchHistory[0].length - 1]) }
+
+function updateSearchHistory() {
+    if (searchHistory.length > 0) {searchBar.attr('placeholder', searchHistory[searchHistory.length - 1]) }
+    else {searchBar.attr('placeholder', 'No search history')}
+}
+
 console.log(searchBar)
 const searchButton = document.getElementById('searchButton');
 const cityName = $('#cityName');
@@ -69,7 +74,8 @@ $('section.citySection').click(async () => {
             $('#img2').attr('src', `https://openweathermap.org/img/wn/${data.list[9].weather[0].icon}@2x.png`)
             $('#img3').attr('src', `https://openweathermap.org/img/wn/${data.list[17].weather[0].icon}@2x.png`)
             $('#img4').attr('src', `https://openweathermap.org/img/wn/${data.list[25].weather[0].icon}@2x.png`)
-            $('#img5').attr('src', `https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png`)
+            $('#img5').attr('src', `https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png`);
+            updateSearchHistory();
 
         })
 
@@ -138,7 +144,8 @@ searchButton.addEventListener('click', async () => {
             $('#img2').attr('src', `https://openweathermap.org/img/wn/${data.list[9].weather[0].icon}@2x.png`)
             $('#img3').attr('src', `https://openweathermap.org/img/wn/${data.list[17].weather[0].icon}@2x.png`)
             $('#img4').attr('src', `https://openweathermap.org/img/wn/${data.list[25].weather[0].icon}@2x.png`)
-            $('#img5').attr('src', `https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png`)
+            $('#img5').attr('src', `https://openweathermap.org/img/wn/${data.list[33].weather[0].icon}@2x.png`);
+            updateSearchHistory();
 
         })
 
@@ -147,3 +154,4 @@ searchButton.addEventListener('click', async () => {
 }
 )
 
+updateSearchHistory();
